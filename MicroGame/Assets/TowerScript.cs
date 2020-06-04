@@ -9,11 +9,11 @@ public class TowerScript : BaseObject
     [Range(0,3)]
     public int xMin, xMax, yMin, yMax;
     public Point prefferedTarget;
+    [HideInInspector]
     public TargetScript target;
     public GameObject targetPrefab;
     protected void Attack(BaseObject b)
     {
-        Debug.Log("Tower attack");
             b.TakeDamage(damage);
     }
     protected void TryAttack()
@@ -32,13 +32,15 @@ public class TowerScript : BaseObject
             for (int i = yMin; i < yMax + 1; i++)
                 for (int j = xMin; j < xMax + 1; j++)
                 {
+
                     if (controller.GetGrid(j, i) != null && targets.Contains(controller.GetGrid(j, i).type))
                     {
+                        Debug.Log("nesto ");
                         bo.Add(controller.GetGrid(j, i));
                     }
                 }
             bo = bo.OrderBy(i => Guid.NewGuid()).ToList();
-
+            Debug.Log(bo.Count);
             if (bo.Count > 0 && bo[0] !=null)
             {
                 

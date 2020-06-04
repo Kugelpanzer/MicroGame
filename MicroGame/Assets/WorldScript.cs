@@ -52,10 +52,10 @@ public class WorldScript : MonoBehaviour
             int r = UnityEngine.Random.Range(0, 4);
             if (r == 0)
             {
-                Instantiate(arabPrefab);
-                arabPrefab.GetComponent<BaseObject>().x = i;
-                arabPrefab.GetComponent<BaseObject>().y = 3;
-                //arabPrefab.GetComponent<BaseObject>().SetPos();
+                GameObject gj=Instantiate(arabPrefab);
+                gj.GetComponent<BaseObject>().x = i;
+                gj.GetComponent<BaseObject>().y = 3;
+                gj.GetComponent<BaseObject>().SetPos();
             }
         }
     }

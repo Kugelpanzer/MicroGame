@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   x: 0
-  y: 0
-  health: 2
+  y: 3
+  health: 1
   damage: 1
   type: 2
   targets: 0000000001000000

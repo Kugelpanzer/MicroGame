@@ -26,7 +26,9 @@ public class ArabScript : BaseObject
     }
     private void Move()
     {
+            controller.WorldGrid[y, x] = null;
             y--;
+            controller.WorldGrid[y, x] = this;
             SetPos();
     }
     private void Attack(BaseObject b)

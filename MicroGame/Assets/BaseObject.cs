@@ -48,7 +48,7 @@ public class BaseObject : MonoBehaviour
         SetPos();
         controller.SetToGrid(this, x, y);
     }
-    protected void SetPos()
+    public void SetPos()
     {
         transform.position = mainGrid.CellToWorld(new Vector3Int(x, y, 0));
     }
