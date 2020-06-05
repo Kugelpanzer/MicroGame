@@ -12,6 +12,7 @@ public class TowerScript : BaseObject
     [HideInInspector]
     public TargetScript target;
     public GameObject targetPrefab;
+    public bool test=false;
     protected void Attack(BaseObject b)
     {
             b.TakeDamage(damage);
@@ -23,11 +24,12 @@ public class TowerScript : BaseObject
             && targets.Contains(controller.GetGrid(prefferedTarget.x, prefferedTarget.y).type)
             )
         {
+            Debug.Log("nesto 2");
             Attack(controller.GetGrid(prefferedTarget.x, prefferedTarget.y));
         }
-        else if(prefferedTarget != null)//ovo izbaci ako hoces da uvek puca kada ima nekog neprijatelja u rangu 
+        else if(prefferedTarget == null)//ovo izbaci ako hoces da uvek puca kada ima nekog neprijatelja u rangu 
         {
-
+            Debug.Log("nesto 1");
             List<BaseObject> bo = new List<BaseObject>();
             for (int i = yMin; i < yMax + 1; i++)
                 for (int j = xMin; j < xMax + 1; j++)
@@ -35,7 +37,7 @@ public class TowerScript : BaseObject
 
                     if (controller.GetGrid(j, i) != null && targets.Contains(controller.GetGrid(j, i).type))
                     {
-                        Debug.Log("nesto ");
+                        
                         bo.Add(controller.GetGrid(j, i));
                     }
                 }
@@ -69,7 +71,9 @@ public class TowerScript : BaseObject
     {
         if (prefferedTarget == null)
         {
+            test = true;
             prefferedTarget = new Point(x, y);
+            Debug.Log(prefferedTarget);
             target = Instantiate(targetPrefab).GetComponent<TargetScript>();
             target.SetPos(x, y);
         }
@@ -77,11 +81,13 @@ public class TowerScript : BaseObject
         {
             if(x==prefferedTarget.x && y == prefferedTarget.y)
             {
+                test = false;
                 Destroy(target.gameObject);
                 prefferedTarget = null;
             }
             else
             {
+                test = true;
                 prefferedTarget = new Point(x, y);
                 target.SetPos(x, y);
             }
