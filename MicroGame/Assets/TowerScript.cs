@@ -25,7 +25,7 @@ public class TowerScript : BaseObject
         {
             Attack(controller.GetGrid(prefferedTarget.x, prefferedTarget.y));
         }
-        else// if(prefferedTarget != null)//ovo izbaci ako hoces da uvek puca kada ima nekog neprijatelja u rangu 
+        else if(prefferedTarget != null)//ovo izbaci ako hoces da uvek puca kada ima nekog neprijatelja u rangu 
         {
 
             List<BaseObject> bo = new List<BaseObject>();
